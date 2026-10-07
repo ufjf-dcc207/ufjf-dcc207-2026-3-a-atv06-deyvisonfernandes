@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./Emoji.css";
 
 type EMOJI_KEYS = "happy" | "cowboy" | "crazy";
@@ -12,11 +13,13 @@ const EMOJI_MAP = new Map<EMOJI_KEYS, string>([
 
 
 export default function Emoji(){
-    let status:EMOJI_KEYS = "happy";
+
+    const [status, setStatus] = useState<EMOJI_KEYS>("cowboy")
+
     function happyClick(){
         console.log("Status", status);
         console.log("Happy!");
-        status = "cowboy";
+        setStatus("happy");
         console.log("Status", status);
     }
 
