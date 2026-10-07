@@ -4,7 +4,7 @@ function App() {
 
   return (
     <>
-    <h1 className="texto">EMOJI</h1>
+    <h1 >EMOJI</h1>
     <Emoji/>
     </>
   )
