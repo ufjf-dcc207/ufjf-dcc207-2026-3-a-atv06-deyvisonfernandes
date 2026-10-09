@@ -62,6 +62,7 @@ export default function Emoji(){
             </div>
         <div>
             <Atributo/>
+            <Atributo/>
         </div>
            <div className="acoes">
             <button onClick = {happyClick}>HAPPY</button>
