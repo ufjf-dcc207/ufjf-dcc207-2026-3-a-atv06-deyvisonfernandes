@@ -2,4 +2,13 @@
     margin: 1em;
     font-size: 4em;
 }
- 
+
+.acoes{
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    padding: 4px;
+    justify-content: center;
+    border-style: dashed;
+    border-color: aqua;
+}

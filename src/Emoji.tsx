@@ -22,6 +22,19 @@ export default function Emoji(){
         setStatus("happy");
         console.log("Status", status);
     }
+    function cowboyClick(){
+        console.log("Status", status);
+        console.log("Cowboy!");
+        setStatus("cowboy");
+        console.log("Status", status);
+    }
+
+    function crazyClick(){
+        console.log("Status", status);
+        console.log("Crazy!");
+        setStatus("crazy");
+        console.log("Status", status);
+    }
 
     return(
         <>
@@ -29,7 +42,10 @@ export default function Emoji(){
             {EMOJI_MAP.get(status) || "🤔"}
             </div>
            <div className="acoes">
-            <button onClick = {happyClick}>HAPPY</button></div> 
+            <button onClick = {happyClick}>HAPPY</button>
+            <button onClick = {cowboyClick}>COWBOY</button>
+            <button onClick = {crazyClick}>CRAZY</button>
+            </div> 
            </>
     )
 }
