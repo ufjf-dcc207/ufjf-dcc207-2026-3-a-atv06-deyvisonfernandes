@@ -6,9 +6,11 @@
 .acoes{
     display: flex;
     flex-direction: row;
+    width: 50%;
     gap: 4px;
-    padding: 4px;
+    padding: 8px;
     justify-content: center;
     border-style: dashed;
-    border-color: aqua;
+    border-color: yellow;
+    align-self: center;
 }

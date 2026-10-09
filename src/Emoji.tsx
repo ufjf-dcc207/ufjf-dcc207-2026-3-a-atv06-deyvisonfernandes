@@ -36,6 +36,23 @@ export default function Emoji(){
         console.log("Status", status);
     }
 
+    function cicloClick(){
+        switch(status){
+            case "cowboy":
+                happyClick();
+                break;
+            case "happy":
+                crazyClick();
+                break;
+            case "crazy":
+                cowboyClick();
+                break;
+            default:
+                happyClick();
+                break;
+        }
+    }
+
     return(
         <>
         <div className="emoji" >
@@ -45,6 +62,7 @@ export default function Emoji(){
             <button onClick = {happyClick}>HAPPY</button>
             <button onClick = {cowboyClick}>COWBOY</button>
             <button onClick = {crazyClick}>CRAZY</button>
+            <button onClick={cicloClick}>CICLO</button>
             </div> 
            </>
     )
