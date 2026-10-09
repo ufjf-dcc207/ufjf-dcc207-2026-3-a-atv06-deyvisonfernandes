@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Emoji.css";
+import Atributo from "./Atributo";
 
 type EMOJI_KEYS = "happy" | "cowboy" | "crazy";
 
@@ -59,6 +60,9 @@ export default function Emoji(){
         <div className="emoji" >
             {EMOJI_MAP.get(status) || "🤔"}
             </div>
+        <div>
+            <Atributo/>
+        </div>
            <div className="acoes">
             <button onClick = {happyClick}>HAPPY</button>
             <button onClick = {cowboyClick}>COWBOY</button>

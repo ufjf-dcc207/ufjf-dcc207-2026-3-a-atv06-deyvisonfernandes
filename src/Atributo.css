@@ -1,0 +1,12 @@
+.estrela{
+    font-size: 2em;
+    margin: 2px;
+}
+
+.acao button {
+    background: none;
+    border: none;
+    font-size: 2em;
+    margin: 20px;
+    cursor: pointer;
+}
