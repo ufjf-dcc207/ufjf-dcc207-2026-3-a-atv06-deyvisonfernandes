@@ -10,7 +10,21 @@
     gap: 4px;
     padding: 8px;
     justify-content: center;
-    border-style: dashed;
-    border-color: yellow;
     align-self: center;
+}
+
+.acoes button{
+    font-size: 20px;
+    color: black;
+    background-color: rgb(221, 221, 104);
+    border-color: rgb(221, 221, 104);
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.texto{
+    font-family: "Times New Roman", Times, serif;
+    font-weight: 900;
+    color: rgb(221, 221, 104);
+    text-shadow: 3px 3px #0f0e0e;
 }

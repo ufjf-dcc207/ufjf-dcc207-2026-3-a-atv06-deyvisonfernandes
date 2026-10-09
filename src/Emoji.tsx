@@ -55,6 +55,7 @@ export default function Emoji(){
 
     return(
         <>
+        <h1 className="texto">EMOJI</h1>
         <div className="emoji" >
             {EMOJI_MAP.get(status) || "🤔"}
             </div>
