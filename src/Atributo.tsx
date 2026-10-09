@@ -25,7 +25,8 @@ export default function Atributo(){
     return(
         <>
 
-        <div className="estrela"> {status} {"⭐".repeat(status)} {"☆".repeat(6-status)} </div>
+        <div className="estrela"> {"⭐".repeat(status)} 
+        <span className="inativo">{"⭐".repeat(6-status)}</span>  </div>
         <div className="acao">
         <button onClick={aumentaStatus}>+</button>
         <button onClick={diminuiStatus}>-</button></div>
