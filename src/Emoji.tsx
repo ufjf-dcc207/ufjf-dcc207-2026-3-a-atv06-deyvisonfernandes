@@ -39,14 +39,15 @@ export default function Emoji() {
     }
     function cicloClick() {
         if(emoji.vida === 0) return;
-        setEmoji((prevEmoji) => ({...prevEmoji, comida : Math.max(0, prevEmoji.comida - 1) as AtributoType}));
-        if (emoji.comida === 0) {
-        setEmoji((prevEmoji) => ({...prevEmoji, vida : Math.max(0, prevEmoji.vida - 1) as AtributoType}));
+        const novoEmoji = structuredClone(emoji);
+        novoEmoji.comida = Math.max(0, novoEmoji.comida - 1) as AtributoType;
+        if (novoEmoji.comida === 0) {
+        novoEmoji.vida = Math.max(0, novoEmoji.vida -1) as AtributoType;
         }
 
-        setEmoji((prevEmoji) => ({...prevEmoji, agua : Math.max(0, prevEmoji.agua - 1) as AtributoType}));
+        novoEmoji.agua = Math.max(0, novoEmoji.agua - 1) as AtributoType;
         if (emoji.agua === 0) {
-            setEmoji((prevEmoji) => ({...prevEmoji, vida : Math.max(0, prevEmoji.vida - 1) as AtributoType}));
+        novoEmoji.vida = Math.max(0, novoEmoji.vida -1) as AtributoType;
         }
 
         if (emoji.luz) {
@@ -57,6 +58,7 @@ export default function Emoji() {
         } else {
         setEmoji((prevEmoji) => ({...prevEmoji, energia : Math.min(5, prevEmoji.energia + 1) as AtributoType}));
         }
+        setEmoji(novoEmoji);
     }
 
     let status = EMOJI_MAP.get("happy");
