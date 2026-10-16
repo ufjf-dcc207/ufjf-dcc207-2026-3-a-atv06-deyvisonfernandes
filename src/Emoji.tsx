@@ -1,75 +1,91 @@
 import { useState } from "react";
 import "./Emoji.css";
 import Atributo from "./Atributo";
+import type { EMOJI_KEYS } from "./types";
 
-type EMOJI_KEYS = "happy" | "cowboy" | "crazy";
 
 const EMOJI_MAP = new Map<EMOJI_KEYS, string>([
-    ["happy", "😁"],
-    ["cowboy", "🤠"],
-    ["crazy", "🤪"],
+    ["happy", "🙂"],
+    ["sick", "🤢"],
+    ["dead", "😵"],
 ]);
 
 
 
+export default function Emoji() {
 
-export default function Emoji(){
+    const [emoji, setEmoji] = useState <EmojiType>({
+        agua:1,
+        comida:2,
+        energia: 3,
+        luz: true,
+        vida:5
+    });
+    
+    const [vida, setVida] = useState<number>(5);
+    const [energia, setEnergia] = useState<number>(4);
+    const [comida, setComida] = useState<number>(1);
+    const [agua, setAgua] = useState<number>(2);
+    const [luz, setLuz] = useState<boolean>(true);
 
-    const [status, setStatus] = useState<EMOJI_KEYS>("cowboy")
-
-    function happyClick(){
-        console.log("Status", status);
-        console.log("Happy!");
-        setStatus("happy");
-        console.log("Status", status);
+    function alimentarClick() {
+        if(vida === 0) return;
+        setComida(Math.min(5, comida + 1));
     }
-    function cowboyClick(){
-        console.log("Status", status);
-        console.log("Cowboy!");
-        setStatus("cowboy");
-        console.log("Status", status);
+    function hidratarClick() {
+        if(vida === 0) return;
+        setAgua(Math.min(5, agua + 1));
     }
-
-    function crazyClick(){
-        console.log("Status", status);
-        console.log("Crazy!");
-        setStatus("crazy");
-        console.log("Status", status);
+    function altenarLuzClick() {
+        setLuz(!luz);
     }
-
-    function cicloClick(){
-        switch(status){
-            case "cowboy":
-                happyClick();
-                break;
-            case "happy":
-                crazyClick();
-                break;
-            case "crazy":
-                cowboyClick();
-                break;
-            default:
-                happyClick();
-                break;
+    function cicloClick() {
+        if(vida === 0) return;
+        setComida(Math.max(0, comida - 1));
+        if (comida === 0) {
+            setVida(Math.max(0, vida - 1));
+        }
+        setAgua(Math.max(0, agua - 1));
+        if (agua === 0) {
+            setVida((prevVida) => Math.max(0, prevVida - 1));
+        }
+        if (luz) {
+            setEnergia(Math.max(0, energia - 1));
+            if (energia === 0) {
+                setVida((prevVida) => Math.max(0, prevVida - 1));
+            }
+        } else {
+            setEnergia(Math.min(5, energia + 1));
         }
     }
 
-    return(
-        <>
-        <h1 className="texto">EMOJI</h1>
-        <div className="emoji" >
-            {EMOJI_MAP.get(status) || "🤔"}
+    let status = EMOJI_MAP.get("happy");
+    if (agua === 0 || comida === 0 || energia === 0) {
+        status = EMOJI_MAP.get("sick");
+    }
+    if (vida === 0) {
+        status = EMOJI_MAP.get("dead");
+    }
+
+
+    return (
+        <div className="emoji">
+            <div className="face">
+                {status}
             </div>
-        <div>
-            <Atributo/>
-            <Atributo/>
+            <div className="atributos">
+                <Atributo icone="❤️" valor={vida} />
+                <Atributo icone="🔋" valor={energia} />
+                <Atributo icone="💧" valor={agua} />
+                <Atributo icone="🍗" valor={comida} />
+                {luz && "💡"}
+            </div>
+            <div className="acoes">
+                <button onClick={alimentarClick}>Alimentar</button>
+                <button onClick={hidratarClick}>Hidratar</button>
+                <button onClick={altenarLuzClick}>{luz ? 'Desligar' : 'Ligar'} Luz</button>
+                <button onClick={cicloClick}>Ciclo</button>
+            </div>
         </div>
-           <div className="acoes">
-            <button onClick = {happyClick}>HAPPY</button>
-            <button onClick = {cowboyClick}>COWBOY</button>
-            <button onClick = {crazyClick}>CRAZY</button>
-            <button onClick={cicloClick}>CICLO</button>
-            </div> 
-           </>
-    )
+    );
 }
